@@ -49,8 +49,8 @@ pipeline {
     
     post {
         success {
-            echo '✅ Pipeline Multibranch RÉUSSI !'
-            echo 'Toutes les étapes sont terminées avec succès.'
+            echo '✅ Pipeline Maven RÉUSSI !'
+            echo 'Projet compilé, testé et packagé avec succès.'
         }
         failure {
             echo '❌ Pipeline échoué !'
