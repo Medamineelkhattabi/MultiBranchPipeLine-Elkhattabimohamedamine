@@ -53,7 +53,7 @@ pipeline {
             echo 'Projet compilé, testé et packagé avec succès.'
         }
         failure {
-            echo '❌ Pipeline échoué !'
+            echo '❌ Pipeline échoué !!'
         }
         always {
             echo '--- Fin de l\'exécution du pipeline ---'
