@@ -2,8 +2,12 @@ pipeline {
     agent {
         docker {
             image 'maven:3.9.12-eclipse-temurin-21-alpine'
-            args '-v $HOME/.m2:/root/.m2'
+            args '-v $HOME/.m2:/root/.m2 -v /tmp/maven-repo:/tmp/.m2'
         }
+    }
+    
+    environment {
+        MAVEN_OPTS = '-Dmaven.repo.local=/tmp/.m2'
     }
     
     stages {
@@ -45,11 +49,14 @@ pipeline {
     
     post {
         success {
-            echo 'Pipeline réussi ! ✅'
-            // Tu peux ajouter une notification ici
+            echo '✅ Pipeline Multibranch RÉUSSI !'
+            echo 'Toutes les étapes sont terminées avec succès.'
         }
         failure {
-            echo 'Pipeline échoué ! ❌'
+            echo '❌ Pipeline échoué !'
+        }
+        always {
+            echo '--- Fin de l\'exécution du pipeline ---'
         }
     }
 }
